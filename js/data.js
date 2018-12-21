@@ -1,7 +1,7 @@
 techniques = [
     {
         name: "Glass Menus",
-        description: "Glass menus description"
+        description: "In the following experiment, you will see each time a pair of glasses with menus to be display on smartglasses. Please select the one that you prefer. If no preference, then select 'It’s a draw'."
     },
 ];
 
