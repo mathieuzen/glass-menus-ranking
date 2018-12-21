@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <center>
+            <h2>{{technique}}</h2>
+            <div ng-hide="finished" class="progress" style="height: 50px;">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{percentage}}"
+              aria-valuemin="0" aria-valuemax="100" style="width:{{percentage}}%; height: 50px;">
+              <span style="display: block; text-align: center;height: 100%;line-height: 3.5;">{{nComparisons}} / {{comparisonsMax}}</span>
+              </div>
+            </div>
+        </center>
+        <hr/>
+    </div>
+    <div ng-hide="finished || description">
+        <div ng-show="image1" class="row row-centered">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-centered">
+                <h1>{{name1}}</h1>
+                <button type="button" class="btn btn-primary btn-description" data-toggle="modal" data-target="#modal1">
+                  Description
+                </button>
+                <br/>
+                <a><img class="img img-responsive img-thumbnail dark" ng-src="images/{{image1}}" ng-click="vote(image1, image2)" />
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-centered">
+                <h1>{{name2}}</h1>
+                <button type="button" class="btn btn-primary btn-description" data-toggle="modal" data-target="#modal2">
+                  Description
+                </button>
+                <br/>
+                <a><img class="img img-responsive img-thumbnail dark" ng-src="images/{{image2}}" ng-click="vote(image2, image1)" />
+                </a>
+            </div>
+        </div>
+        <div ng-show="image1" class="row row-centered">
+            <button ng-click="draw(image1, image2)" class="draw-button btn  nextButton">It's a draw</button>
+        </div>
+    </div>
+    <div id="finishMsg" ng-show="finished">
+        <p>You have done all possible combinations for {{technique}}.</p>
+    </div>
+    <div id="endMsg" ng-show="rankingAvailable">
+        <p>The experiment is finished. Thank you for your participation. You may if you wish so consult the ranking computed until now. </p>
+    </div>
+    <div ng-show="finished || rankingAvailable" class="row row-centered">
+        <button ng-hide="rankingAvailable" ng-click="next()" class="draw-button btn  nextButton">Continue with {{nextTechnique}}</button>
+        <button ng-show="rankingAvailable" ng-click="goToRanking()" class="draw-button btn  nextButton">Global ranking</button>
+    </div>
+    <hr/>
+
+</div>
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{name1}}</h5>
+      </div>
+      <div class="modal-body">
+        {{description1}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{name2}}</h5>
+      </div>
+      <div class="modal-body">
+        {{description2}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
